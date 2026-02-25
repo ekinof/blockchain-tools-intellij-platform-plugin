@@ -1,15 +1,50 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.ekinof.blockchaintools</id>
-    <name>blockchain-tools</name>
+    <name>Blockchain Tools</name>
     <vendor>ekinof</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.ekinof.blockchaintools.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.ekinof.blockchaintools.startup.MyProjectActivity" />
+        <notificationGroup id="BlockchainTools" displayType="BALLOON"/>
+        <applicationService
+            serviceImplementation="com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings"/>
+        <applicationConfigurable
+            parentId="tools"
+            id="com.github.ekinof.blockchaintools.settings.BlockchainToolsConfigurable"
+            instance="com.github.ekinof.blockchaintools.settings.BlockchainToolsConfigurable"
+            displayName="Blockchain Tools"/>
     </extensions>
+
+    <actions>
+        <group id="com.github.ekinof.blockchaintools.BlockchainActionsGroup"
+               class="com.github.ekinof.blockchaintools.actions.BlockchainActionsGroup"
+               popup="true"
+               text="Blockchain Tools">
+            <action id="com.github.ekinof.blockchaintools.GenerateAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.GenerateAddressAction"
+                    text="Generate ERC20 Address"
+                    description="Insert a random EIP-55 checksummed Ethereum address at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="1"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ChecksumAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.ChecksumAddressAction"
+                    text="Checksum Address"
+                    description="Verify the EIP-55 checksum of the selected address">
+                <keyboard-shortcut keymap="$default" first-keystroke="2"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.ToggleCaseAddressAction"
+                    text="Toggle Address Case"
+                    description="Toggle the selected address between lowercase and EIP-55 checksummed form">
+                <keyboard-shortcut keymap="$default" first-keystroke="3"/>
+            </action>
+        </group>
+        <action id="com.github.ekinof.blockchaintools.ShowBlockchainActionsAction"
+                class="com.github.ekinof.blockchaintools.actions.ShowBlockchainActionsAction"
+                text="Show Blockchain Tools">
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift B"/>
+        </action>
+    </actions>
 </idea-plugin>
