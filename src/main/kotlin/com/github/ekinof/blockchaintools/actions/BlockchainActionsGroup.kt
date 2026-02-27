@@ -40,12 +40,12 @@ class BlockchainActionsGroup : DefaultActionGroup() {
         }
 
     companion object {
-        val ADDRESS_ACTIONS = listOf(
+        private val ADDRESS_ACTIONS = listOf(
             "com.github.ekinof.blockchaintools.GenerateAddressAction",
             "com.github.ekinof.blockchaintools.ChecksumAddressAction",
             "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
         )
-        val TXHASH_ACTIONS = listOf(
+        private val TXHASH_ACTIONS = listOf(
             "com.github.ekinof.blockchaintools.GenerateTxHashAction"
         )
     }
