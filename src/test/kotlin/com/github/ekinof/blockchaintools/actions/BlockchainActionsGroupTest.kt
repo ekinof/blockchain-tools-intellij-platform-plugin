@@ -1,45 +1,46 @@
 package com.github.ekinof.blockchaintools.actions
 
-import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
+import com.intellij.openapi.actionSystem.Separator
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class BlockchainActionsGroupTest : BasePlatformTestCase() {
 
-    fun testDefaultOrderProducesThreeChildren() {
+    fun testGroupHasTwoSeparatorsAndFourActions() {
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        assertEquals(3, children.size)
-        assertTrue(children[0].templatePresentation.text.contains("Generate"))
-        assertTrue(children[1].templatePresentation.text.contains("Checksum"))
-        assertTrue(children[2].templatePresentation.text.contains("Toggle"))
+        // Separator + 3 address actions + Separator + 1 txhash action = 6 total
+        assertEquals(6, children.size)
     }
 
-    fun testChildrenHavePositionBasedMnemonics() {
+    fun testFirstChildIsEip55Separator() {
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        assertTrue(children[0].templatePresentation.text.startsWith("1."))
-        assertTrue(children[1].templatePresentation.text.startsWith("2."))
-        assertTrue(children[2].templatePresentation.text.startsWith("3."))
+        assertTrue(children[0] is Separator)
+        assertEquals("EIP-55 Address", (children[0] as Separator).text)
     }
 
-    fun testCustomOrderChangesChildSequence() {
-        val settings = BlockchainToolsSettings()
-        settings.loadState(BlockchainToolsSettings.State(mutableListOf(
-            "com.github.ekinof.blockchaintools.ChecksumAddressAction",
-            "com.github.ekinof.blockchaintools.GenerateAddressAction",
-            "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
-        )))
-        val group = BlockchainActionsGroup(settings)
+    fun testAddressActionsAreNumbered1To3() {
+        val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        assertTrue(children[0].templatePresentation.text.contains("Checksum"))
+        assertTrue(children[1].templatePresentation.text.startsWith("1."))
         assertTrue(children[1].templatePresentation.text.contains("Generate"))
-        assertTrue(children[2].templatePresentation.text.contains("Toggle"))
+        assertTrue(children[2].templatePresentation.text.startsWith("2."))
+        assertTrue(children[2].templatePresentation.text.contains("Checksum"))
+        assertTrue(children[3].templatePresentation.text.startsWith("3."))
+        assertTrue(children[3].templatePresentation.text.contains("Toggle"))
     }
 
-    fun testEmptyOrderProducesNoChildren() {
-        val settings = BlockchainToolsSettings()
-        settings.loadState(BlockchainToolsSettings.State(mutableListOf()))
-        val group = BlockchainActionsGroup(settings)
-        assertEquals(0, group.getChildren(null).size)
+    fun testFifthChildIsEthTxHashSeparator() {
+        val group = BlockchainActionsGroup()
+        val children = group.getChildren(null)
+        assertTrue(children[4] is Separator)
+        assertEquals("ETH TxHash", (children[4] as Separator).text)
+    }
+
+    fun testTxHashActionIsNumbered4() {
+        val group = BlockchainActionsGroup()
+        val children = group.getChildren(null)
+        assertTrue(children[5].templatePresentation.text.startsWith("4."))
+        assertTrue(children[5].templatePresentation.text.contains("TxHash"))
     }
 }
