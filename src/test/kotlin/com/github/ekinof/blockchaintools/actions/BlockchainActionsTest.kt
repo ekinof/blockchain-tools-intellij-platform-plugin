@@ -140,4 +140,15 @@ class BlockchainActionsTest : BasePlatformTestCase() {
         assertTrue(inner.startsWith("0x"))
         assertEquals(66, inner.length)
     }
+
+    fun testGenerateTxHashWithSingleQuotes() {
+        myFixture.configureByText(PlainTextFileType.INSTANCE, "")
+        val action = GenerateTxHashAction(settingsWith(quoteStyle = BlockchainToolsSettings.QuoteStyle.SINGLE))
+        action.actionPerformed(makeEvent(action))
+        val text = myFixture.editor.document.text
+        assertTrue(text.startsWith("'") && text.endsWith("'"))
+        val inner = text.removeSurrounding("'")
+        assertTrue(inner.startsWith("0x"))
+        assertEquals(66, inner.length)
+    }
 }
