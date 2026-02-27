@@ -1,7 +1,6 @@
 package com.github.ekinof.blockchaintools.actions
 
 import com.github.ekinof.blockchaintools.BlockchainToolsBundle
-import com.github.ekinof.blockchaintools.actions.eth.notifyBalloon
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent

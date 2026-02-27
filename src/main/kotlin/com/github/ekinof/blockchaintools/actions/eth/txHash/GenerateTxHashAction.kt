@@ -1,6 +1,6 @@
 package com.github.ekinof.blockchaintools.actions.eth.txHash
 
-import com.github.ekinof.blockchaintools.actions.eth.applyGenerateSettings
+import com.github.ekinof.blockchaintools.actions.applyGenerateSettings
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.openapi.actionSystem.AnAction

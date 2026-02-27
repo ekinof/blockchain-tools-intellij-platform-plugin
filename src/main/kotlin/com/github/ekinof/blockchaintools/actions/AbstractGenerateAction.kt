@@ -1,6 +1,5 @@
 package com.github.ekinof.blockchaintools.actions
 
-import com.github.ekinof.blockchaintools.actions.eth.applyGenerateSettings
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
