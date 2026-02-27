@@ -2,6 +2,7 @@ package com.github.ekinof.blockchaintools.settings
 
 import com.github.ekinof.blockchaintools.BlockchainToolsBundle
 import com.intellij.openapi.options.Configurable
+import com.intellij.ui.TitledSeparator
 import com.intellij.ui.components.JBLabel
 import java.awt.GridBagConstraints
 import java.awt.GridBagLayout
@@ -41,10 +42,16 @@ class BlockchainToolsConfigurable : Configurable {
             weightx = 1.0
         }
         gbc.gridy = 0
-        panel.add(quotePanel, gbc)
+        panel.add(TitledSeparator(BlockchainToolsBundle.message("settings.section.ethereum_address")), gbc)
+        gbc.insets = Insets(4, 16, 4, 0)
         gbc.gridy = 1
-        panel.add(include0xCheckbox, gbc)
+        panel.add(quotePanel, gbc)
         gbc.gridy = 2
+        panel.add(include0xCheckbox, gbc)
+        gbc.insets = Insets(4, 0, 4, 0)
+        gbc.gridy = 3
+        panel.add(TitledSeparator(BlockchainToolsBundle.message("settings.section.ethereum_txhash")), gbc)
+        gbc.gridy = 4
         gbc.weighty = 1.0
         gbc.fill = GridBagConstraints.BOTH
         panel.add(JPanel(), gbc)
