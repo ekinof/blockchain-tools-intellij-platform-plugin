@@ -5,7 +5,7 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class BlockchainActionsGroupTest : BasePlatformTestCase() {
 
-    fun testGroupHasTwoSeparatorsAndFiveActions() {
+    fun testGroupHasTwoSeparatorsAndSevenChildren() {
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
         // Separator + 3 address actions + Separator + 2 txhash actions = 7 total
