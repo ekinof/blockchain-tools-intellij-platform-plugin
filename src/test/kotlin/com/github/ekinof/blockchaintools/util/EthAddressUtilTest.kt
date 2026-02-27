@@ -83,4 +83,19 @@ class EthAddressUtilTest {
             assertTrue("Expected only hex chars, got: $hex", hex.all { it in '0'..'9' || it in 'a'..'f' })
         }
     }
+
+    @Test
+    fun `isValidTxHash accepts 0x-prefixed 64-char hex string`() {
+        assertTrue(EthAddressUtil.isValidTxHash("0x" + "a".repeat(64)))
+        assertTrue(EthAddressUtil.isValidTxHash("0x" + "0123456789abcdefABCDEF".repeat(2) + "01234567890123456789"))
+    }
+
+    @Test
+    fun `isValidTxHash rejects malformed hashes`() {
+        assertFalse(EthAddressUtil.isValidTxHash("0x" + "a".repeat(63)))   // too short
+        assertFalse(EthAddressUtil.isValidTxHash("0x" + "a".repeat(65)))   // too long
+        assertFalse(EthAddressUtil.isValidTxHash("a".repeat(64)))           // no 0x prefix
+        assertFalse(EthAddressUtil.isValidTxHash("0x" + "g".repeat(64)))   // invalid chars
+        assertFalse(EthAddressUtil.isValidTxHash(""))
+    }
 }

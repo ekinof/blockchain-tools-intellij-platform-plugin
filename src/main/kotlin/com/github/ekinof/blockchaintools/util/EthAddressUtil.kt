@@ -7,8 +7,11 @@ object EthAddressUtil {
 
     private val secureRandom = SecureRandom()
     private val ADDRESS_REGEX = Regex("^0x[0-9a-fA-F]{40}$")
+    private val TXHASH_REGEX = Regex("^0x[0-9a-fA-F]{64}$")
 
     fun isValidAddress(address: String): Boolean = ADDRESS_REGEX.matches(address)
+
+    fun isValidTxHash(hash: String): Boolean = TXHASH_REGEX.matches(hash)
 
     fun toChecksumAddress(address: String): String {
         val stripped = (if (address.startsWith("0x", ignoreCase = true)) address.substring(2) else address).lowercase()
