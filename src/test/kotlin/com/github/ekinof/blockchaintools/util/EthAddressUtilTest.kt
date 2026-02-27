@@ -7,7 +7,7 @@ import org.junit.Test
 
 class EthAddressUtilTest {
 
-    // EIP-55 test vectors from the specification
+    // ETH checksum test vectors from the specification
     private val vectors = listOf(
         "0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed",
         "0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359",
@@ -16,7 +16,7 @@ class EthAddressUtilTest {
     )
 
     @Test
-    fun `toChecksumAddress produces correct EIP-55 output for all spec vectors`() {
+    fun `toChecksumAddress produces correct checksummed output for all spec vectors`() {
         for (v in vectors) {
             assertEquals(v, EthAddressUtil.toChecksumAddress(v.lowercase()))
             assertEquals(v, EthAddressUtil.toChecksumAddress(v.uppercase()))
