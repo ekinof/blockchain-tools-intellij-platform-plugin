@@ -40,6 +40,12 @@
                     description="Toggle the selected address between lowercase and EIP-55 checksummed form">
                 <keyboard-shortcut keymap="$default" first-keystroke="3"/>
             </action>
+            <action id="com.github.ekinof.blockchaintools.GenerateTxHashAction"
+                    class="com.github.ekinof.blockchaintools.actions.GenerateTxHashAction"
+                    text="Generate TxHash"
+                    description="Insert a random Ethereum transaction hash at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="4"/>
+            </action>
         </group>
         <action id="com.github.ekinof.blockchaintools.ShowBlockchainActionsAction"
                 class="com.github.ekinof.blockchaintools.actions.ShowBlockchainActionsAction"
