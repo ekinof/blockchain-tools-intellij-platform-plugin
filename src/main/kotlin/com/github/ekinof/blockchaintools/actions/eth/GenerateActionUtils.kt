@@ -1,4 +1,4 @@
-package com.github.ekinof.blockchaintools.actions
+package com.github.ekinof.blockchaintools.actions.eth
 
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 
