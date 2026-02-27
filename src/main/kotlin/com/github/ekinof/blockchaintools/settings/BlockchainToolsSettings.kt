@@ -9,8 +9,11 @@ import com.intellij.openapi.components.*
 )
 class BlockchainToolsSettings : PersistentStateComponent<BlockchainToolsSettings.State> {
 
+    enum class QuoteStyle { NONE, SINGLE, DOUBLE }
+
     data class State(
-        var actionOrder: MutableList<String> = DEFAULT_ORDER.toMutableList()
+        var generateAddressQuoteStyle: QuoteStyle = QuoteStyle.NONE,
+        var generateAddressInclude0x: Boolean = true
     )
 
     private var myState = State()
@@ -22,12 +25,6 @@ class BlockchainToolsSettings : PersistentStateComponent<BlockchainToolsSettings
     }
 
     companion object {
-        val DEFAULT_ORDER = listOf(
-            "com.github.ekinof.blockchaintools.GenerateAddressAction",
-            "com.github.ekinof.blockchaintools.ChecksumAddressAction",
-            "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
-        )
-
         fun getInstance(): BlockchainToolsSettings = service()
     }
 }

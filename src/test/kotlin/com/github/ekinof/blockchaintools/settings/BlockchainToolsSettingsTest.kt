@@ -4,30 +4,32 @@ import junit.framework.TestCase
 
 class BlockchainToolsSettingsTest : TestCase() {
 
-    fun testDefaultOrderContainsAllThreeActions() {
+    fun testDefaultStateHasNoneQuoteStyleAndInclude0x() {
         val settings = BlockchainToolsSettings()
-        assertEquals(3, settings.state.actionOrder.size)
-        assertTrue(settings.state.actionOrder.contains("com.github.ekinof.blockchaintools.GenerateAddressAction"))
-        assertTrue(settings.state.actionOrder.contains("com.github.ekinof.blockchaintools.ChecksumAddressAction"))
-        assertTrue(settings.state.actionOrder.contains("com.github.ekinof.blockchaintools.ToggleCaseAddressAction"))
+        assertEquals(BlockchainToolsSettings.QuoteStyle.NONE, settings.state.generateAddressQuoteStyle)
+        assertTrue(settings.state.generateAddressInclude0x)
     }
 
-    fun testLoadStateRestoresCustomOrder() {
+    fun testLoadStateRestoresCustomValues() {
         val settings = BlockchainToolsSettings()
-        val newOrder = mutableListOf(
-            "com.github.ekinof.blockchaintools.ChecksumAddressAction",
-            "com.github.ekinof.blockchaintools.GenerateAddressAction",
-            "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
+        val newState = BlockchainToolsSettings.State(
+            generateAddressQuoteStyle = BlockchainToolsSettings.QuoteStyle.DOUBLE,
+            generateAddressInclude0x = false
         )
-        settings.loadState(BlockchainToolsSettings.State(newOrder))
-        assertEquals(newOrder, settings.state.actionOrder)
+        settings.loadState(newState)
+        assertEquals(BlockchainToolsSettings.QuoteStyle.DOUBLE, settings.state.generateAddressQuoteStyle)
+        assertFalse(settings.state.generateAddressInclude0x)
     }
 
     fun testGetStateRoundTrip() {
         val settings = BlockchainToolsSettings()
+        settings.loadState(BlockchainToolsSettings.State(
+            generateAddressQuoteStyle = BlockchainToolsSettings.QuoteStyle.SINGLE,
+            generateAddressInclude0x = true
+        ))
         val state = settings.state
         val settings2 = BlockchainToolsSettings()
         settings2.loadState(state)
-        assertEquals(state.actionOrder, settings2.state.actionOrder)
+        assertEquals(state, settings2.state)
     }
 }
