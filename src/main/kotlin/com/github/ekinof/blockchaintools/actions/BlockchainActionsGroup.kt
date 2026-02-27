@@ -46,7 +46,8 @@ class BlockchainActionsGroup : DefaultActionGroup() {
             "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
         )
         private val TXHASH_ACTIONS = listOf(
-            "com.github.ekinof.blockchaintools.GenerateTxHashAction"
+            "com.github.ekinof.blockchaintools.GenerateTxHashAction",
+            "com.github.ekinof.blockchaintools.ValidateTxHashAction"
         )
     }
 }

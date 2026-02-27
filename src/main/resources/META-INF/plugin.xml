@@ -46,6 +46,12 @@
                     description="Insert a random Ethereum transaction hash at the caret">
                 <keyboard-shortcut keymap="$default" first-keystroke="4"/>
             </action>
+            <action id="com.github.ekinof.blockchaintools.ValidateTxHashAction"
+                    class="com.github.ekinof.blockchaintools.actions.eth.txHash.ValidateTxHashAction"
+                    text="Validate TxHash"
+                    description="Verify that the selected text is a valid Ethereum transaction hash">
+                <keyboard-shortcut keymap="$default" first-keystroke="5"/>
+            </action>
         </group>
         <action id="com.github.ekinof.blockchaintools.ShowBlockchainActionsAction"
                 class="com.github.ekinof.blockchaintools.actions.ShowBlockchainActionsAction"

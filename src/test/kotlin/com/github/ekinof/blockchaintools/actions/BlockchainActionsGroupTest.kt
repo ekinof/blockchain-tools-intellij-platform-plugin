@@ -5,11 +5,11 @@ import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class BlockchainActionsGroupTest : BasePlatformTestCase() {
 
-    fun testGroupHasTwoSeparatorsAndFourActions() {
+    fun testGroupHasTwoSeparatorsAndFiveActions() {
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        // Separator + 3 address actions + Separator + 1 txhash action = 6 total
-        assertEquals(6, children.size)
+        // Separator + 3 address actions + Separator + 2 txhash actions = 7 total
+        assertEquals(7, children.size)
     }
 
     fun testFirstChildIsEip55Separator() {
@@ -37,10 +37,12 @@ class BlockchainActionsGroupTest : BasePlatformTestCase() {
         assertEquals("ETH TxHash", (children[4] as Separator).text)
     }
 
-    fun testTxHashActionIsNumbered4() {
+    fun testTxHashActionsAreNumbered4And5() {
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
         assertTrue(children[5].templatePresentation.text.startsWith("4."))
         assertTrue(children[5].templatePresentation.text.contains("TxHash"))
+        assertTrue(children[6].templatePresentation.text.startsWith("5."))
+        assertTrue(children[6].templatePresentation.text.contains("Validate"))
     }
 }
