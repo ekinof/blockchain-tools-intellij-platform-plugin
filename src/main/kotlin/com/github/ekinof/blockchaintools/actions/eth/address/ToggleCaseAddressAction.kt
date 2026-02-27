@@ -1,6 +1,7 @@
 package com.github.ekinof.blockchaintools.actions.eth.address
 
 import com.github.ekinof.blockchaintools.BlockchainToolsBundle
+import com.github.ekinof.blockchaintools.actions.eth.notifyBalloon
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction

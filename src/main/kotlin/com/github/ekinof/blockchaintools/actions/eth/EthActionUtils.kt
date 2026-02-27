@@ -1,4 +1,4 @@
-package com.github.ekinof.blockchaintools.actions.eth.address
+package com.github.ekinof.blockchaintools.actions.eth
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
