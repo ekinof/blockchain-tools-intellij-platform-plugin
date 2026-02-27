@@ -1,4 +1,4 @@
-package com.github.ekinof.blockchaintools.actions
+package com.github.ekinof.blockchaintools.actions.eth.address
 
 import com.github.ekinof.blockchaintools.BlockchainToolsBundle
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
@@ -7,15 +7,13 @@ import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
-import com.intellij.openapi.command.WriteCommandAction
 import com.intellij.openapi.project.Project
 
-class ToggleCaseAddressAction : AnAction() {
+class ChecksumAddressAction : AnAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
-        val selectionModel = editor.selectionModel
-        val selectedText = selectionModel.selectedText
+        val selectedText = editor.selectionModel.selectedText
         if (selectedText == null) {
             notify(e.project, BlockchainToolsBundle.message("action.error.no_selection"), NotificationType.WARNING)
             return
@@ -24,13 +22,10 @@ class ToggleCaseAddressAction : AnAction() {
             notify(e.project, BlockchainToolsBundle.message("action.error.invalid_address"), NotificationType.ERROR)
             return
         }
-        val toggled = EthAddressUtil.toggleCase(selectedText)
-        WriteCommandAction.runWriteCommandAction(e.project) {
-            editor.document.replaceString(
-                selectionModel.selectionStart,
-                selectionModel.selectionEnd,
-                toggled
-            )
+        if (EthAddressUtil.isValidChecksum(selectedText)) {
+            notify(e.project, BlockchainToolsBundle.message("action.checksum.valid"), NotificationType.INFORMATION)
+        } else {
+            notify(e.project, BlockchainToolsBundle.message("action.checksum.invalid"), NotificationType.WARNING)
         }
     }
 

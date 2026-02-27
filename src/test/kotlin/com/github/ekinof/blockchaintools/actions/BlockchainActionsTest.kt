@@ -1,5 +1,9 @@
 package com.github.ekinof.blockchaintools.actions
 
+import com.github.ekinof.blockchaintools.actions.eth.address.ChecksumAddressAction
+import com.github.ekinof.blockchaintools.actions.eth.address.GenerateAddressAction
+import com.github.ekinof.blockchaintools.actions.eth.address.ToggleCaseAddressAction
+import com.github.ekinof.blockchaintools.actions.eth.txHash.GenerateTxHashAction
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.openapi.actionSystem.AnActionEvent

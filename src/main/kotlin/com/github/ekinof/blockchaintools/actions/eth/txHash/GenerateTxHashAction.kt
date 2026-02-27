@@ -1,4 +1,4 @@
-package com.github.ekinof.blockchaintools.actions
+package com.github.ekinof.blockchaintools.actions.eth.txHash
 
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil

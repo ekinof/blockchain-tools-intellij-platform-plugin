@@ -23,25 +23,25 @@
                popup="true"
                text="Blockchain Tools">
             <action id="com.github.ekinof.blockchaintools.GenerateAddressAction"
-                    class="com.github.ekinof.blockchaintools.actions.GenerateAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.eth.address.GenerateAddressAction"
                     text="Generate ERC20 Address"
                     description="Insert a random EIP-55 checksummed Ethereum address at the caret">
                 <keyboard-shortcut keymap="$default" first-keystroke="1"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.ChecksumAddressAction"
-                    class="com.github.ekinof.blockchaintools.actions.ChecksumAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.eth.address.ChecksumAddressAction"
                     text="Checksum Address"
                     description="Verify the EIP-55 checksum of the selected address">
                 <keyboard-shortcut keymap="$default" first-keystroke="2"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
-                    class="com.github.ekinof.blockchaintools.actions.ToggleCaseAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.eth.address.ToggleCaseAddressAction"
                     text="Toggle Address Case"
                     description="Toggle the selected address between lowercase and EIP-55 checksummed form">
                 <keyboard-shortcut keymap="$default" first-keystroke="3"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.GenerateTxHashAction"
-                    class="com.github.ekinof.blockchaintools.actions.GenerateTxHashAction"
+                    class="com.github.ekinof.blockchaintools.actions.eth.txHash.GenerateTxHashAction"
                     text="Generate TxHash"
                     description="Insert a random Ethereum transaction hash at the caret">
                 <keyboard-shortcut keymap="$default" first-keystroke="4"/>
