@@ -1,5 +1,6 @@
 package com.github.ekinof.blockchaintools.actions.eth.txHash
 
+import com.github.ekinof.blockchaintools.actions.applyGenerateSettings
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.openapi.actionSystem.AnAction
@@ -13,16 +14,7 @@ class GenerateTxHashAction(
 
     override fun actionPerformed(e: AnActionEvent) {
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
-        val state = settings.state
-        var hash = EthAddressUtil.generateTxHash()
-        if (!state.generateAddressInclude0x) {
-            hash = hash.removePrefix("0x")
-        }
-        val output = when (state.generateAddressQuoteStyle) {
-            BlockchainToolsSettings.QuoteStyle.SINGLE -> "'$hash'"
-            BlockchainToolsSettings.QuoteStyle.DOUBLE -> "\"$hash\""
-            BlockchainToolsSettings.QuoteStyle.NONE -> hash
-        }
+        val output = applyGenerateSettings(EthAddressUtil.generateTxHash(), settings.state)
         WriteCommandAction.runWriteCommandAction(e.project) {
             editor.document.insertString(editor.caretModel.offset, output)
         }

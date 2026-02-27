@@ -1,5 +1,6 @@
 package com.github.ekinof.blockchaintools.actions.eth.address
 
+import com.github.ekinof.blockchaintools.actions.applyGenerateSettings
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.openapi.actionSystem.AnAction
@@ -13,16 +14,7 @@ class GenerateAddressAction(
 
     override fun actionPerformed(e: AnActionEvent) {
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
-        val state = settings.state
-        var address = EthAddressUtil.generateAddress()
-        if (!state.generateAddressInclude0x) {
-            address = address.removePrefix("0x")
-        }
-        val output = when (state.generateAddressQuoteStyle) {
-            BlockchainToolsSettings.QuoteStyle.SINGLE -> "'$address'"
-            BlockchainToolsSettings.QuoteStyle.DOUBLE -> "\"$address\""
-            BlockchainToolsSettings.QuoteStyle.NONE -> address
-        }
+        val output = applyGenerateSettings(EthAddressUtil.generateAddress(), settings.state)
         WriteCommandAction.runWriteCommandAction(e.project) {
             editor.document.insertString(editor.caretModel.offset, output)
         }
