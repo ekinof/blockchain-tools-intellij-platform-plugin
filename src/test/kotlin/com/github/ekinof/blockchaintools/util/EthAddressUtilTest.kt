@@ -72,4 +72,15 @@ class EthAddressUtilTest {
             assertTrue("Expected checksummed address but got: $addr", EthAddressUtil.isValidChecksum(addr))
         }
     }
+
+    @Test
+    fun `generateTxHash returns a valid 0x-prefixed 64-char lowercase hex string`() {
+        repeat(10) {
+            val hash = EthAddressUtil.generateTxHash()
+            assertTrue("Expected 0x prefix, got: $hash", hash.startsWith("0x"))
+            assertEquals("Expected 66 chars total, got: $hash", 66, hash.length)
+            val hex = hash.removePrefix("0x")
+            assertTrue("Expected only hex chars, got: $hex", hex.all { it in '0'..'9' || it in 'a'..'f' })
+        }
+    }
 }

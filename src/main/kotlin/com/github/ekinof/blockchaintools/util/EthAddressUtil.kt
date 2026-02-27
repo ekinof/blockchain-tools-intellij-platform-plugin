@@ -43,6 +43,12 @@ object EthAddressUtil {
         return toChecksumAddress("0x$hex")
     }
 
+    fun generateTxHash(): String {
+        val bytes = ByteArray(32)
+        SecureRandom().nextBytes(bytes)
+        return "0x" + bytes.joinToString("") { "%02x".format(it) }
+    }
+
     private fun keccak256(input: ByteArray): ByteArray {
         val digest = KeccakDigest(256)
         digest.update(input, 0, input.size)
