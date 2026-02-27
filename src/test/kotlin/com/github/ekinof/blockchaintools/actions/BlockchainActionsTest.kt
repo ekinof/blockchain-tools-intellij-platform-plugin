@@ -4,6 +4,7 @@ import com.github.ekinof.blockchaintools.actions.eth.address.ChecksumAddressActi
 import com.github.ekinof.blockchaintools.actions.eth.address.GenerateAddressAction
 import com.github.ekinof.blockchaintools.actions.eth.address.ToggleCaseAddressAction
 import com.github.ekinof.blockchaintools.actions.eth.txHash.GenerateTxHashAction
+import com.github.ekinof.blockchaintools.actions.eth.txHash.ValidateTxHashAction
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -154,5 +155,31 @@ class BlockchainActionsTest : BasePlatformTestCase() {
         val inner = text.removeSurrounding("'")
         assertTrue(inner.startsWith("0x"))
         assertEquals(66, inner.length)
+    }
+
+    fun testValidateTxHashShowsValidForCorrectHash() {
+        val validHash = "0x" + "a".repeat(64)
+        myFixture.configureByText(PlainTextFileType.INSTANCE, validHash)
+        myFixture.editor.selectionModel.setSelection(0, validHash.length)
+        val action = ValidateTxHashAction()
+        action.actionPerformed(makeEvent(action))
+        assertEquals(validHash, myFixture.editor.document.text)
+    }
+
+    fun testValidateTxHashDoesNotModifyDocumentForInvalidHash() {
+        val invalidHash = "0xdeadbeef"
+        myFixture.configureByText(PlainTextFileType.INSTANCE, invalidHash)
+        myFixture.editor.selectionModel.setSelection(0, invalidHash.length)
+        val action = ValidateTxHashAction()
+        action.actionPerformed(makeEvent(action))
+        assertEquals(invalidHash, myFixture.editor.document.text)
+    }
+
+    fun testValidateTxHashDoesNothingWithNoSelection() {
+        val text = "some text"
+        myFixture.configureByText(PlainTextFileType.INSTANCE, text)
+        val action = ValidateTxHashAction()
+        action.actionPerformed(makeEvent(action))
+        assertEquals(text, myFixture.editor.document.text)
     }
 }
