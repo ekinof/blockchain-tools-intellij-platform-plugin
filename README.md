@@ -1,28 +1,42 @@
-# blockchain-tools
+# Blockchain Tools
 
-![Build](https://github.com/ekinof/blockchain-tools/workflows/Build/badge.svg)
+![Build](https://github.com/ekinof/blockchain-tools-intellij-platform-plugin/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
 
-## Template ToDo list
-- [x] Create a new [IntelliJ Platform Plugin Template][template] project.
-- [ ] Get familiar with the [template documentation][template].
-- [ ] Adjust the [pluginGroup](./gradle.properties) and [pluginName](./gradle.properties), as well as the [id](./src/main/resources/META-INF/plugin.xml) and [sources package](./src/main/kotlin).
-- [ ] Adjust the plugin description in `README` (see [Tips][docs:plugin-description])
-- [ ] Review the [Legal Agreements](https://plugins.jetbrains.com/docs/marketplace/legal-agreements.html?from=IJPluginTemplate).
-- [ ] [Publish a plugin manually](https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate) for the first time.
-- [ ] Set the `MARKETPLACE_ID` in the above README badges. You can obtain it once the plugin is published to JetBrains Marketplace.
-- [ ] Set the [Plugin Signing](https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate) related [secrets](https://github.com/JetBrains/intellij-platform-plugin-template#environment-variables).
-- [ ] Set the [Deployment Token](https://plugins.jetbrains.com/docs/marketplace/plugin-upload.html?from=IJPluginTemplate).
-- [ ] Click the <kbd>Watch</kbd> button on the top of the [IntelliJ Platform Plugin Template][template] to be notified about releases containing new features and fixes.
-- [ ] Configure the [CODECOV_TOKEN](https://docs.codecov.com/docs/quick-start) secret for automated test coverage reports on PRs
-
 <!-- Plugin description -->
-This Fancy IntelliJ Platform Plugin is going to be your implementation of the brilliant ideas that you have.
+**Blockchain Tools** is an IntelliJ Platform plugin that helps developers working with blockchain applications by providing quick generation and validation of blockchain-related data.
 
-This specific section is a source for the [plugin.xml](/src/main/resources/META-INF/plugin.xml) file which will be extracted by the [Gradle](/build.gradle.kts) during the build process.
+## Features
 
-To keep everything working, do not remove `<!-- ... -->` sections. 
+### Ethereum (ERC20)
+- **Generate Address**: Insert a random checksummed Ethereum address
+- **Checksum Address**: Verify EIP-55 checksum of selected addresses
+- **Toggle Address Case**: Convert between lowercase and checksummed formats
+- **Generate TxHash**: Insert a random Ethereum transaction hash (0x + 64 hex chars)
+- **Validate TxHash**: Verify transaction hash format
+
+### Bitcoin
+- **Generate Address**: Create random Bitcoin addresses (P2PKH, P2SH, Bech32)
+- **Validate Address**: Check Bitcoin address validity and format
+- **Generate TxHash**: Insert random Bitcoin transaction hashes
+- **Validate TxHash**: Verify Bitcoin transaction hash format
+
+### Solana
+- **Generate Address**: Create random Solana addresses (Base58-encoded)
+- **Validate Address**: Verify Solana address format
+- **Generate Signature**: Insert random Solana transaction signatures
+- **Validate Signature**: Check Solana signature validity
+
+## Usage
+
+Access all tools via:
+- **Keyboard**: `Ctrl+Alt+Shift+B` to open the action menu
+- **Actions Menu**: Search for "Blockchain Tools" in the action popup
+- **Direct Shortcuts**: Numeric keys 1-9 and Ctrl+1-4 for specific actions
+
+All generated data is cryptographically random and suitable for testing purposes.
+
 <!-- Plugin description end -->
 
 ## Installation

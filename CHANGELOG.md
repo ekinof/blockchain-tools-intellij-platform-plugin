@@ -1,7 +1,22 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# blockchain-tools Changelog
+# Blockchain Tools Changelog
 
 ## [Unreleased]
+
+## [0.0.1] - 2026-02-27
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+- Ethereum (ERC20) address generation with EIP-55 checksumming
+- Ethereum address validation and case toggling
+- Ethereum transaction hash generation and validation
+- Bitcoin address generation (P2PKH, P2SH, Bech32) and validation
+- Bitcoin transaction hash generation and validation
+- Solana address generation and validation (Base58)
+- Solana transaction signature generation and validation
+- Quick action menu accessible via `Ctrl+Alt+Shift+B`
+- Keyboard shortcuts for all actions (numeric keys 1-9 and Ctrl+1-4)
+- Settings panel to customize quote styles and enable/disable blockchains
+- Comprehensive unit tests with cryptographic test vectors
+
+[Unreleased]: https://github.com/ekinof/blockchain-tools-intellij-platform-plugin/compare/0.0.1...HEAD
+[0.0.1]: https://github.com/ekinof/blockchain-tools-intellij-platform-plugin/commits/0.0.1
