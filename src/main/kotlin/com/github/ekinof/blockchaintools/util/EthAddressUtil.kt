@@ -5,6 +5,7 @@ import java.security.SecureRandom
 
 object EthAddressUtil {
 
+    private val secureRandom = SecureRandom()
     private val ADDRESS_REGEX = Regex("^0x[0-9a-fA-F]{40}$")
 
     fun isValidAddress(address: String): Boolean = ADDRESS_REGEX.matches(address)
@@ -38,14 +39,14 @@ object EthAddressUtil {
 
     fun generateAddress(): String {
         val bytes = ByteArray(20)
-        SecureRandom().nextBytes(bytes)
+        secureRandom.nextBytes(bytes)
         val hex = bytes.joinToString("") { "%02x".format(it) }
         return toChecksumAddress("0x$hex")
     }
 
     fun generateTxHash(): String {
         val bytes = ByteArray(32)
-        SecureRandom().nextBytes(bytes)
+        secureRandom.nextBytes(bytes)
         return "0x" + bytes.joinToString("") { "%02x".format(it) }
     }
 
