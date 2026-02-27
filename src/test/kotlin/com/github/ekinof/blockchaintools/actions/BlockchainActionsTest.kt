@@ -28,7 +28,13 @@ class BlockchainActionsTest : BasePlatformTestCase() {
         include0x: Boolean = true
     ): BlockchainToolsSettings {
         val s = BlockchainToolsSettings()
-        s.loadState(BlockchainToolsSettings.State(quoteStyle, include0x))
+        s.loadState(BlockchainToolsSettings.State(
+            quoteStyle = quoteStyle,
+            ethEnabled = true,
+            btcEnabled = true,
+            solEnabled = true,
+            ethInclude0x = include0x
+        ))
         return s
     }
 

@@ -12,8 +12,16 @@ class BlockchainToolsSettings : PersistentStateComponent<BlockchainToolsSettings
     enum class QuoteStyle { NONE, SINGLE, DOUBLE }
 
     data class State(
-        var generateAddressQuoteStyle: QuoteStyle = QuoteStyle.NONE,
-        var generateAddressInclude0x: Boolean = true
+        // Global quote style for all blockchains
+        var quoteStyle: QuoteStyle = QuoteStyle.NONE,
+        
+        // Enabled blockchains
+        var ethEnabled: Boolean = true,
+        var btcEnabled: Boolean = true,
+        var solEnabled: Boolean = true,
+        
+        // ETH-specific settings
+        var ethInclude0x: Boolean = true
     )
 
     private var myState = State()

@@ -1,5 +1,6 @@
 package com.github.ekinof.blockchaintools.actions
 
+import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.intellij.openapi.actionSystem.*
 
 class BlockchainActionsGroup : DefaultActionGroup() {
@@ -7,48 +8,58 @@ class BlockchainActionsGroup : DefaultActionGroup() {
     override fun getChildren(e: AnActionEvent?): Array<AnAction> {
         val manager = ActionManager.getInstance()
         val result = mutableListOf<AnAction>()
+        val settings = BlockchainToolsSettings.getInstance().state
         var counter = 1
 
-        result.add(Separator("ETH Address"))
-        for (id in ETH_ADDRESS_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
+        // ETH Section
+        if (settings.ethEnabled) {
+            result.add(Separator("ETH Address"))
+            for (id in ETH_ADDRESS_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
+
+            result.add(Separator("ETH TxHash"))
+            for (id in ETH_TXHASH_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
         }
 
-        result.add(Separator("ETH TxHash"))
-        for (id in ETH_TXHASH_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
+        // BTC Section
+        if (settings.btcEnabled) {
+            result.add(Separator("BTC Address"))
+            for (id in BTC_ADDRESS_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
+
+            result.add(Separator("BTC TxHash"))
+            for (id in BTC_TXHASH_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
         }
 
-        result.add(Separator("BTC Address"))
-        for (id in BTC_ADDRESS_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
-        }
+        // SOL Section
+        if (settings.solEnabled) {
+            result.add(Separator("SOL Address"))
+            for (id in SOL_ADDRESS_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
 
-        result.add(Separator("BTC TxHash"))
-        for (id in BTC_TXHASH_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
-        }
-
-        result.add(Separator("SOL Address"))
-        for (id in SOL_ADDRESS_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
-        }
-
-        result.add(Separator("SOL Signature"))
-        for (id in SOL_SIGNATURE_ACTIONS) {
-            val action = manager.getAction(id) ?: continue
-            val text = "${counter++}. ${action.templatePresentation.text}"
-            result.add(wrapWithText(action, text))
+            result.add(Separator("SOL Signature"))
+            for (id in SOL_SIGNATURE_ACTIONS) {
+                val action = manager.getAction(id) ?: continue
+                val text = "${counter++}. ${action.templatePresentation.text}"
+                result.add(wrapWithText(action, text))
+            }
         }
 
         return result.toTypedArray()

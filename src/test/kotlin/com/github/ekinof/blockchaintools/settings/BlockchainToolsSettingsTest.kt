@@ -4,28 +4,40 @@ import junit.framework.TestCase
 
 class BlockchainToolsSettingsTest : TestCase() {
 
-    fun testDefaultStateHasNoneQuoteStyleAndInclude0x() {
+    fun testDefaultStateHasNoneQuoteStyleAndAllBlockchainsEnabled() {
         val settings = BlockchainToolsSettings()
-        assertEquals(BlockchainToolsSettings.QuoteStyle.NONE, settings.state.generateAddressQuoteStyle)
-        assertTrue(settings.state.generateAddressInclude0x)
+        assertEquals(BlockchainToolsSettings.QuoteStyle.NONE, settings.state.quoteStyle)
+        assertTrue(settings.state.ethEnabled)
+        assertTrue(settings.state.btcEnabled)
+        assertTrue(settings.state.solEnabled)
+        assertTrue(settings.state.ethInclude0x)
     }
 
     fun testLoadStateRestoresCustomValues() {
         val settings = BlockchainToolsSettings()
         val newState = BlockchainToolsSettings.State(
-            generateAddressQuoteStyle = BlockchainToolsSettings.QuoteStyle.DOUBLE,
-            generateAddressInclude0x = false
+            quoteStyle = BlockchainToolsSettings.QuoteStyle.DOUBLE,
+            ethEnabled = false,
+            btcEnabled = true,
+            solEnabled = false,
+            ethInclude0x = false
         )
         settings.loadState(newState)
-        assertEquals(BlockchainToolsSettings.QuoteStyle.DOUBLE, settings.state.generateAddressQuoteStyle)
-        assertFalse(settings.state.generateAddressInclude0x)
+        assertEquals(BlockchainToolsSettings.QuoteStyle.DOUBLE, settings.state.quoteStyle)
+        assertFalse(settings.state.ethEnabled)
+        assertTrue(settings.state.btcEnabled)
+        assertFalse(settings.state.solEnabled)
+        assertFalse(settings.state.ethInclude0x)
     }
 
     fun testGetStateRoundTrip() {
         val settings = BlockchainToolsSettings()
         settings.loadState(BlockchainToolsSettings.State(
-            generateAddressQuoteStyle = BlockchainToolsSettings.QuoteStyle.SINGLE,
-            generateAddressInclude0x = true
+            quoteStyle = BlockchainToolsSettings.QuoteStyle.SINGLE,
+            ethEnabled = true,
+            btcEnabled = false,
+            solEnabled = true,
+            ethInclude0x = true
         ))
         val state = settings.state
         val settings2 = BlockchainToolsSettings()
