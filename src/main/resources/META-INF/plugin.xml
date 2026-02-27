@@ -22,22 +22,23 @@
                class="com.github.ekinof.blockchaintools.actions.BlockchainActionsGroup"
                popup="true"
                text="Blockchain Tools">
+            <!-- ETH Actions -->
             <action id="com.github.ekinof.blockchaintools.GenerateAddressAction"
                     class="com.github.ekinof.blockchaintools.actions.eth.address.GenerateAddressAction"
                     text="Generate ERC20 Address"
-                    description="Insert a random EIP-55 checksummed Ethereum address at the caret">
+                    description="Insert a random checksummed Ethereum address at the caret">
                 <keyboard-shortcut keymap="$default" first-keystroke="1"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.ChecksumAddressAction"
                     class="com.github.ekinof.blockchaintools.actions.eth.address.ChecksumAddressAction"
                     text="Checksum Address"
-                    description="Verify the EIP-55 checksum of the selected address">
+                    description="Verify the checksum of the selected address">
                 <keyboard-shortcut keymap="$default" first-keystroke="2"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
                     class="com.github.ekinof.blockchaintools.actions.eth.address.ToggleCaseAddressAction"
                     text="Toggle Address Case"
-                    description="Toggle the selected address between lowercase and EIP-55 checksummed form">
+                    description="Toggle the selected address between lowercase and checksummed form">
                 <keyboard-shortcut keymap="$default" first-keystroke="3"/>
             </action>
             <action id="com.github.ekinof.blockchaintools.GenerateTxHashAction"
@@ -51,6 +52,58 @@
                     text="Validate TxHash"
                     description="Verify that the selected text is a valid Ethereum transaction hash">
                 <keyboard-shortcut keymap="$default" first-keystroke="5"/>
+            </action>
+            
+            <!-- BTC Actions -->
+            <action id="com.github.ekinof.blockchaintools.GenerateBtcAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.btc.address.GenerateAddressAction"
+                    text="Generate BTC Address"
+                    description="Insert a random Bitcoin address at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="6"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ValidateBtcAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.btc.address.ValidateAddressAction"
+                    text="Validate BTC Address"
+                    description="Verify that the selected text is a valid Bitcoin address">
+                <keyboard-shortcut keymap="$default" first-keystroke="7"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.GenerateBtcTxHashAction"
+                    class="com.github.ekinof.blockchaintools.actions.btc.txHash.GenerateTxHashAction"
+                    text="Generate BTC TxHash"
+                    description="Insert a random Bitcoin transaction hash at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="8"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ValidateBtcTxHashAction"
+                    class="com.github.ekinof.blockchaintools.actions.btc.txHash.ValidateTxHashAction"
+                    text="Validate BTC TxHash"
+                    description="Verify that the selected text is a valid Bitcoin transaction hash">
+                <keyboard-shortcut keymap="$default" first-keystroke="9"/>
+            </action>
+            
+            <!-- SOL Actions -->
+            <action id="com.github.ekinof.blockchaintools.GenerateSolAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.sol.address.GenerateAddressAction"
+                    text="Generate SOL Address"
+                    description="Insert a random Solana address at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl 1"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ValidateSolAddressAction"
+                    class="com.github.ekinof.blockchaintools.actions.sol.address.ValidateAddressAction"
+                    text="Validate SOL Address"
+                    description="Verify that the selected text is a valid Solana address">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl 2"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.GenerateSolSignatureAction"
+                    class="com.github.ekinof.blockchaintools.actions.sol.signature.GenerateSignatureAction"
+                    text="Generate SOL Signature"
+                    description="Insert a random Solana transaction signature at the caret">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl 3"/>
+            </action>
+            <action id="com.github.ekinof.blockchaintools.ValidateSolSignatureAction"
+                    class="com.github.ekinof.blockchaintools.actions.sol.signature.ValidateSignatureAction"
+                    text="Validate SOL Signature"
+                    description="Verify that the selected text is a valid Solana transaction signature">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl 4"/>
             </action>
         </group>
         <action id="com.github.ekinof.blockchaintools.ShowBlockchainActionsAction"

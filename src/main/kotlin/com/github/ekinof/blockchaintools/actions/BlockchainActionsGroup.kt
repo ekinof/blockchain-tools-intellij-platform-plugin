@@ -9,15 +9,43 @@ class BlockchainActionsGroup : DefaultActionGroup() {
         val result = mutableListOf<AnAction>()
         var counter = 1
 
-        result.add(Separator("EIP-55 Address"))
-        for (id in ADDRESS_ACTIONS) {
+        result.add(Separator("ETH Address"))
+        for (id in ETH_ADDRESS_ACTIONS) {
             val action = manager.getAction(id) ?: continue
             val text = "${counter++}. ${action.templatePresentation.text}"
             result.add(wrapWithText(action, text))
         }
 
         result.add(Separator("ETH TxHash"))
-        for (id in TXHASH_ACTIONS) {
+        for (id in ETH_TXHASH_ACTIONS) {
+            val action = manager.getAction(id) ?: continue
+            val text = "${counter++}. ${action.templatePresentation.text}"
+            result.add(wrapWithText(action, text))
+        }
+
+        result.add(Separator("BTC Address"))
+        for (id in BTC_ADDRESS_ACTIONS) {
+            val action = manager.getAction(id) ?: continue
+            val text = "${counter++}. ${action.templatePresentation.text}"
+            result.add(wrapWithText(action, text))
+        }
+
+        result.add(Separator("BTC TxHash"))
+        for (id in BTC_TXHASH_ACTIONS) {
+            val action = manager.getAction(id) ?: continue
+            val text = "${counter++}. ${action.templatePresentation.text}"
+            result.add(wrapWithText(action, text))
+        }
+
+        result.add(Separator("SOL Address"))
+        for (id in SOL_ADDRESS_ACTIONS) {
+            val action = manager.getAction(id) ?: continue
+            val text = "${counter++}. ${action.templatePresentation.text}"
+            result.add(wrapWithText(action, text))
+        }
+
+        result.add(Separator("SOL Signature"))
+        for (id in SOL_SIGNATURE_ACTIONS) {
             val action = manager.getAction(id) ?: continue
             val text = "${counter++}. ${action.templatePresentation.text}"
             result.add(wrapWithText(action, text))
@@ -40,14 +68,30 @@ class BlockchainActionsGroup : DefaultActionGroup() {
         }
 
     companion object {
-        private val ADDRESS_ACTIONS = listOf(
+        private val ETH_ADDRESS_ACTIONS = listOf(
             "com.github.ekinof.blockchaintools.GenerateAddressAction",
             "com.github.ekinof.blockchaintools.ChecksumAddressAction",
             "com.github.ekinof.blockchaintools.ToggleCaseAddressAction"
         )
-        private val TXHASH_ACTIONS = listOf(
+        private val ETH_TXHASH_ACTIONS = listOf(
             "com.github.ekinof.blockchaintools.GenerateTxHashAction",
             "com.github.ekinof.blockchaintools.ValidateTxHashAction"
+        )
+        private val BTC_ADDRESS_ACTIONS = listOf(
+            "com.github.ekinof.blockchaintools.GenerateBtcAddressAction",
+            "com.github.ekinof.blockchaintools.ValidateBtcAddressAction"
+        )
+        private val BTC_TXHASH_ACTIONS = listOf(
+            "com.github.ekinof.blockchaintools.GenerateBtcTxHashAction",
+            "com.github.ekinof.blockchaintools.ValidateBtcTxHashAction"
+        )
+        private val SOL_ADDRESS_ACTIONS = listOf(
+            "com.github.ekinof.blockchaintools.GenerateSolAddressAction",
+            "com.github.ekinof.blockchaintools.ValidateSolAddressAction"
+        )
+        private val SOL_SIGNATURE_ACTIONS = listOf(
+            "com.github.ekinof.blockchaintools.GenerateSolSignatureAction",
+            "com.github.ekinof.blockchaintools.ValidateSolSignatureAction"
         )
     }
 }
