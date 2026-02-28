@@ -7,20 +7,22 @@ import com.github.ekinof.blockchaintools.actions.eth.txHash.GenerateTxHashAction
 import com.github.ekinof.blockchaintools.actions.eth.txHash.ValidateTxHashAction
 import com.github.ekinof.blockchaintools.settings.BlockchainToolsSettings
 import com.github.ekinof.blockchaintools.util.EthAddressUtil
+import com.intellij.openapi.actionSystem.ActionUiKind
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.Presentation
+import com.intellij.openapi.actionSystem.impl.SimpleDataContext
 import com.intellij.openapi.fileTypes.PlainTextFileType
-import com.intellij.testFramework.MapDataContext
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 
 class BlockchainActionsTest : BasePlatformTestCase() {
 
     private fun makeEvent(action: com.intellij.openapi.actionSystem.AnAction): AnActionEvent {
-        val context = MapDataContext()
-        context.put(CommonDataKeys.PROJECT, project)
-        context.put(CommonDataKeys.EDITOR, myFixture.editor)
-        return AnActionEvent.createFromDataContext("test", Presentation(), context)
+        val context = SimpleDataContext.builder()
+            .add(CommonDataKeys.PROJECT, project)
+            .add(CommonDataKeys.EDITOR, myFixture.editor)
+            .build()
+        return AnActionEvent.createEvent(context, Presentation(), "test", ActionUiKind.NONE, null)
     }
 
     private fun settingsWith(

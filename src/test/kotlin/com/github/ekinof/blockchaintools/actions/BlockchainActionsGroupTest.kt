@@ -14,8 +14,8 @@ class BlockchainActionsGroupTest : BasePlatformTestCase() {
         
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        // 6 Separators + 13 actions (3 ETH addr + 2 ETH tx + 2 BTC addr + 2 BTC tx + 2 SOL addr + 2 SOL sig) = 19 total
-        assertEquals(19, children.size)
+        // 6 Separators + 13 actions (3 ETH addr + 2 ETH tx + 2 BTC addr + 2 BTC tx + 2 SOL addr + 2 SOL sig) + 1 trailing separator + 1 settings = 21 total
+        assertEquals(21, children.size)
     }
 
     fun testGroupWithOnlyEthEnabled() {
@@ -26,8 +26,8 @@ class BlockchainActionsGroupTest : BasePlatformTestCase() {
         
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        // 2 Separators + 5 actions (3 ETH addr + 2 ETH tx) = 7 total
-        assertEquals(7, children.size)
+        // 2 Separators + 5 actions (3 ETH addr + 2 ETH tx) + 1 trailing separator + 1 settings = 9 total
+        assertEquals(9, children.size)
     }
 
     fun testGroupWithOnlyBtcEnabled() {
@@ -38,8 +38,8 @@ class BlockchainActionsGroupTest : BasePlatformTestCase() {
         
         val group = BlockchainActionsGroup()
         val children = group.getChildren(null)
-        // 2 Separators + 4 actions (2 BTC addr + 2 BTC tx) = 6 total
-        assertEquals(6, children.size)
+        // 2 Separators + 4 actions (2 BTC addr + 2 BTC tx) + 1 trailing separator + 1 settings = 8 total
+        assertEquals(8, children.size)
     }
 
     fun testGroupWithAllBlockchainsDisabled() {
