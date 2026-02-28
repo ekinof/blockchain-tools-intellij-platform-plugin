@@ -1,8 +1,8 @@
 # Blockchain Tools
 
 ![Build](https://github.com/ekinof/blockchain-tools-intellij-platform-plugin/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/30393.svg)](https://plugins.jetbrains.com/plugin/30393)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/30393.svg)](https://plugins.jetbrains.com/plugin/30393)
 
 <!-- Plugin description -->
 **Blockchain Tools** is an IntelliJ Platform plugin that helps developers working with blockchain applications by providing quick generation and validation of blockchain-related data.
@@ -48,9 +48,9 @@ All generated data is cryptographically random and suitable for testing purposes
 
 - Using JetBrains Marketplace:
 
-  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
+  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/30393) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
 
-  You can also download the [latest release](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID/versions) from JetBrains Marketplace and install it manually using
+  You can also download the [latest release](https://plugins.jetbrains.com/plugin/30393/versions) from JetBrains Marketplace and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 - Manually:
