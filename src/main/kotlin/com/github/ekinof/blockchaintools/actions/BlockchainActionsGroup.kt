@@ -62,6 +62,10 @@ class BlockchainActionsGroup : DefaultActionGroup() {
             }
         }
 
+        result.add(Separator())
+        val settingsAction = manager.getAction("com.github.ekinof.blockchaintools.OpenSettingsAction")
+        if (settingsAction != null) result.add(settingsAction)
+
         return result.toTypedArray()
     }
 

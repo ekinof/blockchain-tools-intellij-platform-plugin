@@ -111,5 +111,11 @@
                 text="Show Blockchain Tools">
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift B"/>
         </action>
+        <action id="com.github.ekinof.blockchaintools.OpenSettingsAction"
+                class="com.github.ekinof.blockchaintools.actions.OpenSettingsAction"
+                text="Blockchain Tools Settings"
+                description="Open Blockchain Tools configuration">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>
