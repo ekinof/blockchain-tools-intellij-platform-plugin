@@ -6,10 +6,10 @@ import java.security.SecureRandom
 object BtcAddressUtil {
 
     private val secureRandom = SecureRandom()
-    private val BECH32_ALPHABET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
-    
+    private const val BECH32_ALPHABET = "qpzry9x8gf2tvdw0s3jn54khce6mua7l"
+
     // Legacy P2PKH: 1...  (26-35 chars)
-    private val P2PKH_REGEX = Regex("^[1][a-km-zA-HJ-NP-Z1-9]{25,34}$")
+    private val P2PKH_REGEX = Regex("^1[a-km-zA-HJ-NP-Z1-9]{25,34}$")
     // SegWit P2WPKH: bc1... (42-62 chars for bech32)
     private val BECH32_REGEX = Regex("^(bc1|tb1)[a-z0-9]{39,59}$")
     // Transaction hash: 64 hex chars
